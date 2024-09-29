@@ -7,3 +7,4 @@ Admin Server Side application for Akaru.
 - [x] Able to send DELETE request for user deletion
 - [ ] Still need to add password for updating user details
 - [ ] Adding checkers to incoming requests
+  - [ ] Adding checker if email is already used
