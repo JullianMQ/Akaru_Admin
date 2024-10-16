@@ -1,39 +1,39 @@
 import express from 'express';
-var usersRouter = express.Router();
+const usersRouter = express.Router();
 import { admin } from '../app.js';
 import { getAuth } from 'firebase-admin/auth';
 
 /* GET users listing. */
-usersRouter.get('/', async function (req, res) {
-    const users = await admin.auth().listUsers();
-    res.send(users);
-});
+// usersRouter.get('/', async function (req, res) {
+//     const users = await admin.auth().listUsers();
+//     res.send(users);
+// });
 
 // GET BY ID
-usersRouter.get('/:uid', async (req, res) => {
-    try {
-        const uid = req.params.uid;
-        const userRecord = await getAuth().getUser(uid)
-        res.send(userRecord);
-    } catch (error) {
-        res.status(404).send({
-            message: "User not found: " + error
-        });
-    }
-})
+// usersRouter.get('/:uid', async (req, res) => {
+//     try {
+//         const uid = req.params.uid;
+//         const userRecord = await getAuth().getUser(uid)
+//         res.send(userRecord);
+//     } catch (error) {
+//         res.status(404).send({
+//             message: "User not found: " + error
+//         });
+//     }
+// })
 
 // GET BY EMAIL
-usersRouter.get('/email/:email', async (req, res) => {
-    const email = req.params.email;
-    try {
-        const userRecord = await getAuth().getUserByEmail(email)
-        res.send(userRecord);
-    } catch (error) {
-        res.status(404).send({
-            message: "User not found: " + error
-        });
-    }
-});
+// usersRouter.get('/email/:email', async (req, res) => {
+//     const email = req.params.email;
+//     try {
+//         const userRecord = await getAuth().getUserByEmail(email)
+//         res.send(userRecord);
+//     } catch (error) {
+//         res.status(404).send({
+//             message: "User not found: " + error
+//         });
+//     }
+// });
 
 // Create USER
 usersRouter.post('/create', async (req, res) => {
@@ -94,9 +94,6 @@ usersRouter.put('/change', async (req, res) => {
     }
 
     try {
-        const user = await getAuth().getUser(uid);
-        console.log(user);
-
         let changes = {};
 
         if (displayName) {
